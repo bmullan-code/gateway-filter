@@ -16,7 +16,8 @@ mvn package
 - Create the gateway sender with filter
 
 ```
-create gateway-sender --id=remoteB --parallel=false --remote-distributed-system-id="2" --gateway-event-filter=io.pivotal.se.TimingGatewayEventFilter 
+create gateway-sender --id=remoteB --parallel=false --remote-distributed-system-id="2" 
+--gateway-event-filter=io.pivotal.se.TimingGatewayEventFilter 
 ```
 
 
