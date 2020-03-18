@@ -21,17 +21,17 @@ create gateway-sender --id=remoteB --parallel=false --remote-distributed-system-
 ```
 
 ### Statistics
-receivedEvents
-transmittedEvents
-acknowledgedEvents
-totalQueueTime
-minimumQueueTime
-maximumQueueTime
-queueTimePerEvent
-totalTransmitTime
-minimumTransmitTime
-maximumTransmitTime
-transmitTimePerEvent
+* receivedEvents
+* transmittedEvents
+* acknowledgedEvents
+* totalQueueTime
+* minimumQueueTime
+* maximumQueueTime
+* queueTimePerEvent
+* totalTransmitTime
+* minimumTransmitTime
+* maximumTransmitTime
+* transmitTimePerEvent
 
 
 ### Log Format
