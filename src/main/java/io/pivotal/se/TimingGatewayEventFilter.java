@@ -3,9 +3,9 @@ package io.pivotal.se;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+//import java.util.logging.FileHandler;
+//import java.util.logging.Logger;
+//import java.util.logging.SimpleFormatter;
 
 import org.apache.geode.cache.Declarable;
 import org.apache.geode.cache.wan.GatewayEventFilter;
@@ -14,8 +14,8 @@ import org.apache.geode.internal.cache.wan.GatewaySenderEventImpl;
 
 public class TimingGatewayEventFilter implements GatewayEventFilter, Declarable {
 
-  Logger logger = Logger.getLogger("statistics");  
-  FileHandler fh;
+//  Logger logger = Logger.getLogger("statistics");  
+//  FileHandler fh;
 	
   private GatewaySenderQueueStatistics queueStatistics;
   
@@ -23,11 +23,11 @@ public class TimingGatewayEventFilter implements GatewayEventFilter, Declarable 
   
   public TimingGatewayEventFilter() throws Exception {
 	  
-	  fh = new FileHandler("statistics.log");  
-      logger.addHandler(fh);
-      SimpleFormatter formatter = new SimpleFormatter();  
-      fh.setFormatter(formatter);  
-      logger.info("Setting up statistics logging");
+//	  fh = new FileHandler("statistics.log");  
+//      logger.addHandler(fh);
+//      SimpleFormatter formatter = new SimpleFormatter();  
+//      fh.setFormatter(formatter);  
+//      logger.info("Setting up statistics logging");
       
     this.queueStatistics = new GatewaySenderQueueStatistics();
     this.transmitStartTimes = new ConcurrentHashMap<>();
@@ -128,8 +128,8 @@ public class TimingGatewayEventFilter implements GatewayEventFilter, Declarable 
               || currentTransmittedEvents != previousTransmittedEvents
             	|| currentAcknowledgedEvents != previousAcknowledgedEvents) {
               System.out.println(queueStatistics);
-              System.err.println(queueStatistics);
-              logger.info(queueStatistics.toString());  
+//              System.err.println(queueStatistics);
+//              logger.info(queueStatistics.toString());  
               previousReceivedEvents = currentReceivedEvents;
               previousTransmittedEvents = currentTransmittedEvents;
               previousAcknowledgedEvents = currentAcknowledgedEvents;
