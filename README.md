@@ -16,7 +16,30 @@ mvn package
 - Create the gateway sender with filter
 
 ```
-create gateway-sender --id=remoteB --parallel=false --remote-distributed-system-id="2" --gateway-event-filter=io.pivotal.se.TimingGatewayEventFilter 
+create gateway-sender --id=remoteB --parallel=false --remote-distributed-system-id="2" 
+--gateway-event-filter=io.pivotal.se.TimingGatewayEventFilter 
 ```
+
+### Statistics
+* receivedEvents
+* transmittedEvents
+* acknowledgedEvents
+* totalQueueTime
+* minimumQueueTime
+* maximumQueueTime
+* queueTimePerEvent
+* totalTransmitTime
+* minimumTransmitTime
+* maximumTransmitTime
+* transmitTimePerEvent
+
+
+### Log Format
+```
+INFO: GatewaySenderQueueStatistics[receivedEvents=125; transmittedEvents=1; acknowledgedEvents=0; 
+totalQueueTime=134; minimumQueueTime=134; maximumQueueTime=134; queueTimePerEvent=134; 
+totalTransmitTime=0; minimumTransmitTime=9223372036854775807; maximumTransmitTime=0; transmitTimePerEvent=0]
+```
+
 
 
