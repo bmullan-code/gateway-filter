@@ -62,7 +62,7 @@ public class TimingGatewayEventFilter implements GatewayEventFilter, Declarable 
 			this.transmitStartTimes.put(gsei.getShadowKey(), currentTime);
 		
 			// Log the current event
-			logTime(gsei, "queueTime", currentTime, gsei.getCreationTime(), queueTime);
+			//logTime(gsei, "queueTime", currentTime, gsei.getCreationTime(), queueTime);
 		}
     return true;
   }
@@ -84,7 +84,7 @@ public class TimingGatewayEventFilter implements GatewayEventFilter, Declarable 
 			this.queueStatistics.addTransmitTime(transmitTime);
 
       // Log the current event
-			logTime(gsei, "transmitTime", currentTime, transmitStartTime, transmitTime);
+			//logTime(gsei, "transmitTime", currentTime, transmitStartTime, transmitTime);
 		}
   }
 
