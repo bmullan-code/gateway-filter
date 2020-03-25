@@ -45,7 +45,8 @@ public class TimingGatewayEventFilter implements GatewayEventFilter, Declarable 
     // This method can be called multiple times for the same batch if the remote site is
     // not connected.
     GatewaySenderEventImpl gsei = (GatewaySenderEventImpl) event;
-    if (this.transmitStartTimes.containsKey(gsei.getShadowKey())) {
+    //if (this.transmitStartTimes.containsKey(gsei.getShadowKey())) {
+    if (this.transmitStartTimes.containsKey(gsei.getEventId().getSequenceId())) {
       // This case means the batch is being re-attempted.
       // @TODO Decrement the previous time from the stats and add the new time.
       //System.out.println(Thread.currentThread().getName() + ": Reattempting transmission event=" + event.getKey());
@@ -59,7 +60,8 @@ public class TimingGatewayEventFilter implements GatewayEventFilter, Declarable 
 			this.queueStatistics.addQueueTime(queueTime);
 		
 			// Set the transmit start time for this event
-			this.transmitStartTimes.put(gsei.getShadowKey(), currentTime);
+			//this.transmitStartTimes.put(gsei.getShadowKey(), currentTime);
+      this.transmitStartTimes.put(gsei.getEventId().getSequenceId(), currentTime);
 		
 			// Log the current event
 			//logTime(gsei, "queueTime", currentTime, gsei.getCreationTime(), queueTime);
@@ -70,7 +72,8 @@ public class TimingGatewayEventFilter implements GatewayEventFilter, Declarable 
   public void afterAcknowledgement(GatewayQueueEvent event) {
     // Get transmit start time for this event
     GatewaySenderEventImpl gsei = (GatewaySenderEventImpl) event;
-    Long transmitStartTime = this.transmitStartTimes.remove(gsei.getShadowKey());
+    // Long transmitStartTime = this.transmitStartTimes.remove(gsei.getShadowKey());
+    Long transmitStartTime = this.transmitStartTimes.remove(gsei.getEventId().getSequenceId());
     
     // If the event was not transmitted by this member, ignore it.
     // Only handle primary events.
@@ -99,8 +102,10 @@ public class TimingGatewayEventFilter implements GatewayEventFilter, Declarable 
     	.append(" ")
     	.append(activity)
     	.append(" for event ")
-    	.append("shadowKey=")
-    	.append(event.getShadowKey())
+    	// .append("shadowKey=")
+    	// .append(event.getShadowKey())
+      .append("eventId=")
+      .append(event.getEventId().getSequenceId())
     	.append("; key=")
     	.append(event.getKey())
     	.append("; currentTime=")
