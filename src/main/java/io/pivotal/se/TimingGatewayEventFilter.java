@@ -21,7 +21,7 @@ public class TimingGatewayEventFilter implements GatewayEventFilter, Declarable 
   
   private Map<Long,Long> transmitStartTimes;
   
-  public TimingGatewayEventFilter() throws Exception {
+  public TimingGatewayEventFilter() {
 	  
 //	  fh = new FileHandler("statistics.log");  
 //      logger.addHandler(fh);
@@ -32,6 +32,10 @@ public class TimingGatewayEventFilter implements GatewayEventFilter, Declarable 
     this.queueStatistics = new GatewaySenderQueueStatistics();
     this.transmitStartTimes = new ConcurrentHashMap<>();
     launchDumpQueueStatisticsThread();
+  }
+
+  public GatewaySenderQueueStatistics getGatewaySenderQueueStatistics() {
+    return this.queueStatistics;
   }
 
   public boolean beforeEnqueue(GatewayQueueEvent event) {

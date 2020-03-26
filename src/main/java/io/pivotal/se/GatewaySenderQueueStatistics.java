@@ -2,7 +2,7 @@ package io.pivotal.se;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-public class GatewaySenderQueueStatistics {
+public class GatewaySenderQueueStatistics implements java.io.Serializable {
 	
 	private AtomicLong receivedEvents;
 
