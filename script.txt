@@ -42,7 +42,7 @@ put --region=/regionX --key="key20" --value="xvalue20"
 
 remove --region=/regionX --key="key1"
 remove --region=/regionX --key="key2"
-remove --region=/regionX --key="key3""
+remove --region=/regionX --key="key3"
 remove --region=/regionX --key="key4"
 remove --region=/regionX --key="key5"
 remove --region=/regionX --key="key6"
