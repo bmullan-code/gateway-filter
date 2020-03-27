@@ -16,8 +16,13 @@ mvn package
 - Create the gateway sender with filter
 
 ```
-create gateway-sender --id=remoteB --parallel=false --remote-distributed-system-id="2" 
+gfsh> create gateway-sender --id=remoteB --parallel=false --remote-distributed-system-id="2" 
 --gateway-event-filter=io.pivotal.se.TimingGatewayEventFilter 
+```
+
+- To enable the filter for an existing gateway sender you can use the function 
+```
+gfsh> execute function --id=GetGatewaySenderQueueStatisticsFunction --arguments=<gateway-id>
 ```
 
 ### Statistics
